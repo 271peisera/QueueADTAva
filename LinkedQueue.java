@@ -28,6 +28,7 @@ public class LinkedQueue<T> implements QueueInterface<T>
         if(size == 0)
         {
             stack = new LLNode<T>(item);
+            size++;
             return stack.getInfo();
         }
         else
@@ -70,8 +71,9 @@ public class LinkedQueue<T> implements QueueInterface<T>
         else
         {
             T removing = stack.getInfo();
-            LLNode<T> tempRef = stack.getLink();
-            stack = tempRef;
+            LLNode<T> tempRef = stack;
+            stack = tempRef.getLink();
+            tempRef.setLink(null);
             size--;
             return removing;
         }
